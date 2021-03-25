@@ -39,11 +39,17 @@ let pets = [
 
 const ListarPets = () => {
 
-    for(let i = 0; i < pets.length; i++ ){
-        console.log(pets[i].nome);
-    }
+    for(let pet of pets){
+        
+        //console.log(pets[i].nome);
 
+        //console.log(`${pet.nome}, ${pet.idade}, ${pet.tipo}, ${pet.raca}`);
+        
+        console.log(`O nome do pet é ${pet.nome}, e o nome do tutor é ${pet.tutor}`);
+    }
 }
 
 ListarPets();
 
+
+console.log
