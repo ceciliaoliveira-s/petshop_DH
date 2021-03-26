@@ -1,0 +1,48 @@
+{
+ 
+    "pets" : [{"nome":"tobe",
+        "tipo":"cachorro",
+        "idade":8,
+        "raca":"pastor alemão",
+        "peso":3,
+        "tutor":"doug",
+        "contato":"(81) 99999-9999",
+        "vacinado":true,
+        "servicos":["banho","tosa"]},
+        
+        {
+        "nome":"dori",
+        "tipo":"Peixe",
+        "idade":4,
+        "raca":"podlle",
+        "peso":3,
+        "tutor":"ana",
+        "contato":"(81) 99999-9999",
+        "vacinado":true,
+        "servicos":["banho","tosa"]
+    },
+        
+       
+    {
+        "nome":"garfield",
+        "tipo":"cachorro",
+        "idade":8,
+        "raca":"pastor alemão",
+        "peso":3,
+        "tutor":"josé",
+        "contato":"(81) 99999-9999",
+        "vacinado":false,
+        "servicos":["banho","tosa"]
+    }
+    
+    ]
+    
+    
+
+
+
+
+
+}
+        
+    

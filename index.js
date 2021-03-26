@@ -1,46 +1,14 @@
 const nomePetshop = "PETSHOP DH"
+let bancodedados = require ("./bancodedados.json");
+let pets = bancodedados.pets;
 
-let pets = [
-    {     
-    nome: 'tobe',
-    tipo: 'cachorro',
-    idade: 8,
-    raca: 'pastor alemão',
-    peso: 3,
-    tutor: 'doug',
-    contato: '(81) 99999-9999',
-    vacinado: true,
-    servicos: ['banho', 'tosa',]
-},
 
-{   nome: 'dori',
-    tipo: 'gato',
-    idade: 4,
-    raca: 'podlle',
-    peso: 3,
-    tutor: 'ana',
-    contato: '(81) 99999-9999',
-    vacinado: true,
-    servicos: ['banho', 'tosa',]
-},
 
-{   nome: 'tgarfield',
-    tipo: 'cachorro',
-    idade: 8,
-    raca: 'pastor alemão',
-    peso: 3,
-    tutor: 'josé',
-    contato: '(81) 99999-9999',
-    vacinado: false,
-    servicos: ['banho', 'tosa',]
-},
-
-];
 
 const listarPets = () =>{
     for(let pet of pets){
-        // console.log(`O Nome do pet é ${pet.nome}, e o nome do  tutor é ${pet.tutor}`);
-        vacinarPet(pet.vacinado, pet.nome);
+        console.log(`O Nome do pet é ${pet.nome}, e o nome do  tutor é ${pet.tutor} e ele ${pet.vacinado ? "foi vacinado" : "Não foi vacinado"}`);
+      
         
     }
 }
@@ -68,6 +36,7 @@ const campanhaVacina = () => {
     console.log(`${naoVacinados} devem ser vacinados!`);
 }
 
+
 const adicionarPet = () =>{
     let petNovo =
     {
@@ -85,6 +54,53 @@ const adicionarPet = () =>{
 }
 
 
-adicionarPet();
-listarPets();
-campanhaVacina();
+const darBanho = () =>{
+    console.log("BANHO:");
+    for(let pet of pets){
+
+    const tomouBanho = pet.servicos.includes('banho');
+    if(tomouBanho == true){
+        console.log(`${pet.nome} já tomou banho`)
+    }
+        
+    }
+}
+
+const tosarPet = () =>{
+    console.log("=============================");
+    console.log("TOSA:");
+    for(let pet of pets){
+    const tosarPet = pet.servicos.includes('tosar');
+    if(tosarPet == true){
+        console.log(`${pet.nome} Já foi tosado`)
+    }
+    
+    }
+}
+
+const apararUnhaPet = () =>{
+    console.log("=============================")
+    console.log("UNHA:");
+    for(let pet of pets){
+
+    const apararUnhaPet = pet.servicos.includes('Aparar unha');
+    if(apararUnhaPet == true){
+        console.log(`${pet.nome} Já fez a unha`);
+    }
+    
+    }
+}
+
+const atenderCliente = (pet, servico) => {
+
+    console.log(`Olá, ${pet.nome}`);
+
+
+    servico(pet);
+
+    console.log(`Tchau, até mais!`);
+
+}
+ //listarPets();
+ atenderCliente(pets[0], darBanho);
+
