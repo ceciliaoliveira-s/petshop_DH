@@ -1,12 +1,23 @@
 const nomePetshop = "PETSHOP DH"
-let bancodedados = require ("./bancodedados.json");
-let pets = bancodedados.pets;
+
+
+//const moment = require ('moment');
+const fs = require ('fs');
+let bancodedados = fs.readFileSync('./bancodedados.json');
+
+    bancodedados = JSON.parse(bancodedados);
+
+    const atualizarBanco = () => {
+    // Conversão de objeto javascript para JSON
+     let petsAtualizado = JSON.stringify(bancodedados);
+        // Atualização do arquivo bancodedados.json 
+      fs.writeFileSync('bancodedados.json', petsAtualizado, 'utf-8');
+}
 
 
 
-
-const listarPets = () =>{
-    for(let pet of pets){
+    const listarPets = () =>{
+        for(let pet of bancodedados.pets){
         console.log(`O Nome do pet é ${pet.nome}, e o nome do  tutor é ${pet.tutor} e ele ${pet.vacinado ? "foi vacinado" : "Não foi vacinado"}`);
       
         
@@ -20,13 +31,13 @@ const vacinarPet = (vacinado, nome) =>{
     else{
         console.log(`${nome} Já foi vacinado`);
     }
-
+    atualizarBanco();
 }
 
 const campanhaVacina = () => {
 
     let naoVacinados = 0;
-    for(let pet of pets){
+    for(let pet of bancodedados.pets){
         if(pet.vacinado === false){
             naoVacinados++;
         }
@@ -50,13 +61,14 @@ const adicionarPet = () =>{
             vacinado: false,
             servicos: ['']
     }
-    pets.push(petNovo);
+    bancodedados.pets.push(petNovo);
+    atualizarBanco();
 }
 
 
 const darBanho = () =>{
     console.log("BANHO:");
-    for(let pet of pets){
+    for(let pet of bancodedados.pets){
 
     const tomouBanho = pet.servicos.includes('banho');
     if(tomouBanho == true){
@@ -64,6 +76,8 @@ const darBanho = () =>{
     }
         
     }
+
+    atualizarBanco();
 }
 
 const tosarPet = () =>{
@@ -76,7 +90,10 @@ const tosarPet = () =>{
     }
     
     }
+
+    atualizarBanco();
 }
+
 
 const apararUnhaPet = () =>{
     console.log("=============================")
@@ -89,6 +106,7 @@ const apararUnhaPet = () =>{
     }
     
     }
+    atualizarBanco();    
 }
 
 const atenderCliente = (pet, servico) => {
@@ -100,7 +118,12 @@ const atenderCliente = (pet, servico) => {
 
     console.log(`Tchau, até mais!`);
 
+
+    atualizarBanco();
 }
+
  //listarPets();
- atenderCliente(pets[0], darBanho);
+ atenderCliente(bancodedados.pets[3], darBanho);
+
+
 
